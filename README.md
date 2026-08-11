@@ -721,7 +721,7 @@ Além das operações de consulta e cadastro, o Serviço de Produtos possui um e
 O endpoint:
 
 ```text
-DELETE /produtos
+DELETE /produtos```
 
 ---
 
