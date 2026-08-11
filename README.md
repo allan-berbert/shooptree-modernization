@@ -511,71 +511,122 @@ diagrams/c4-container.puml
 
 É necessário possuir:
 
--   Python instalado;
--   Git instalado;
--   VS Code ou outro editor de código;
--   acesso ao repositório do projeto.
+- **Python** instalado;
+- **Git** instalado;
+- **VS Code** ou outro editor de código;
+- acesso ao repositório do projeto.
 
-------------------------------------------------------------------------
+---
 
-## 14.2 Ativar o ambiente virtual
+## 14.2 Clonar o repositório
 
-Na raiz do projeto:
+Caso o projeto ainda não esteja disponível localmente, clone o repositório:
 
-``` powershell
+```powershell
+git clone https://github.com/allan-berbert/shooptree-modernization.git
+cd shooptree-modernization
+```
+
+> O ambiente virtual `.venv` não faz parte do repositório. Ele deve ser criado localmente após o projeto ser clonado.
+
+---
+
+## 14.3 Criar o ambiente virtual
+
+Na raiz do projeto, crie um novo ambiente virtual:
+
+```powershell
+python -m venv .venv
+```
+
+Esse comando cria a pasta `.venv` localmente no computador.
+
+---
+
+## 14.4 Ativar o ambiente virtual
+
+No Windows PowerShell:
+
+```powershell
 .\.venv\Scripts\Activate.ps1
 ```
 
-------------------------------------------------------------------------
+Após a ativação, o terminal deverá apresentar `(.venv)` no início da linha de comando.
 
-## 14.3 Executar o Serviço de Produtos
+---
 
-Em um terminal:
+## 14.5 Instalar as dependências
 
-``` powershell
+Com o ambiente virtual ativado, instale as bibliotecas utilizadas pelos serviços FastAPI:
+
+```powershell
+pip install fastapi uvicorn
+```
+
+---
+
+## 14.6 Executar o Serviço de Produtos
+
+Em um terminal com o ambiente virtual ativado:
+
+```powershell
 cd .\produto_service
 uvicorn main:app --reload --port 8001
 ```
 
-Acesse:
+A documentação interativa da API pode ser acessada em:
 
-``` text
+```text
 http://127.0.0.1:8001/docs
 ```
 
-------------------------------------------------------------------------
+---
 
-## 14.4 Executar o Serviço de Pagamentos
+## 14.7 Executar o Serviço de Pagamentos
 
-Abra outro terminal e retorne à raiz do projeto:
+Abra outro terminal, ative o ambiente virtual e retorne à raiz do projeto:
 
-``` powershell
-cd ..
+```powershell
+.\.venv\Scripts\Activate.ps1
 cd .\pagamento_service
 uvicorn main:app --reload --port 8002
 ```
 
-Acesse:
+A documentação interativa da API pode ser acessada em:
 
-``` text
+```text
 http://127.0.0.1:8002/docs
 ```
 
-------------------------------------------------------------------------
+---
 
-## 14.5 Executar a simulação de eventos
+## 14.8 Executar a simulação de eventos
 
-Abra outro terminal.
+Abra outro terminal e ative o ambiente virtual:
 
-A partir da raiz:
+```powershell
+.\.venv\Scripts\Activate.ps1
+```
 
-``` powershell
+A partir da raiz do projeto:
+
+```powershell
 cd .\events
 python main.py
 ```
 
-O terminal deverá apresentar as etapas da compra, publicação do evento,
-processamento do pagamento e envio da notificação.
+O terminal deverá apresentar as etapas da compra, publicação do evento, processamento do pagamento e envio da notificação.
+
+---
+
+## 14.9 Resumo das portas utilizadas
+
+| Serviço | Porta | Documentação |
+|---|---:|---|
+| Serviço de Produtos | 8001 | `http://127.0.0.1:8001/docs` |
+| Serviço de Pagamentos | 8002 | `http://127.0.0.1:8002/docs` |
+| Simulação de Eventos | — | Execução pelo terminal |
+
 
 ------------------------------------------------------------------------
 
@@ -712,7 +763,7 @@ implementação prática em Python/FastAPI.
 
 ---
 
-# 21. Endpoint DELETE — Produtos
+# 21. DELETE — Produtos — FUNÇÃO ADICIONAL
 
 Além das operações de consulta e cadastro, o Serviço de Produtos possui um endpoint para remoção dos produtos armazenados em memória.
 
