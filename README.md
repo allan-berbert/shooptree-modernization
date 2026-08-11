@@ -716,12 +716,6 @@ implementação prática em Python/FastAPI.
 
 Além das operações de consulta e cadastro, o Serviço de Produtos possui um endpoint para remoção dos produtos armazenados em memória.
 
-## DELETE `/produtos`
-
-O endpoint:
-
-```text
-DELETE /produtos```
 
 ---
 
@@ -732,3 +726,5 @@ Um exemplo de aplicação de uma arquitetura baseada em serviços independentes 
 A plataforma utiliza serviços independentes para diferentes responsabilidades e mecanismos de comunicação orientados a eventos para integrar funcionalidades, permitindo que componentes sejam desenvolvidos, escalados e atualizados de forma independente.
 
 Essa abordagem apresenta similaridades com a proposta de modernização da ShoopTree, especialmente na separação de responsabilidades e na utilização de eventos para permitir que diferentes componentes reajam a uma mesma ação de negócio.
+
+---
