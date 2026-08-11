@@ -1,0 +1,16 @@
+@startuml C4_Context
+
+!include <C4/C4_Context>
+
+title ShoopTree - Diagrama de Contexto
+
+Person(cliente, "Cliente", "Usuário que realiza compras na plataforma")
+
+System(shooptree, "ShoopTree", "Plataforma de comércio eletrônico modernizada")
+
+System_Ext(notification, "Serviço de Notificações", "Sistema responsável pelo envio de notificações ao cliente")
+
+Rel(cliente, shooptree, "Realiza compras e acompanha pedidos")
+Rel(shooptree, notification, "Solicita notificações sobre eventos da compra")
+
+@enduml

@@ -1,0 +1,38 @@
+@startuml C4_Container
+
+!include <C4/C4_Container>
+
+title ShoopTree - Diagrama de Containers
+
+Person(cliente, "Cliente", "Usuário que realiza compras")
+
+System_Boundary(shooptree, "ShoopTree") {
+
+    Container(produtos, "Serviço de Produtos", "Python + FastAPI", "Gerencia os produtos")
+
+    Container(pagamentos, "Serviço de Pagamentos", "Python + FastAPI", "Gerencia os pagamentos")
+
+    Container(eventbus, "Event Bus", "Python", "Distribui eventos")
+
+    Container(paymentconsumer, "Payment Consumer", "Python", "Consome eventos e simula o processamento do pagamento")
+
+    Container(notificationconsumer, "Notification Consumer", "Python", "Consome eventos e simula o envio de notificações")
+
+    Container(purchaseproducer, "Purchase Producer", "Python", "Simula a realização de uma compra e publica o evento CompraRealizada")
+
+}
+
+Rel(cliente, produtos, "Consulta produtos")
+Rel(cliente, pagamentos, "Registra pagamentos")git add diagrams
+Rel(cliente, purchaseproducer, "Realiza uma compra")
+
+Rel(purchaseproducer, eventbus, "Publica CompraRealizada")
+
+Rel(eventbus, paymentconsumer, "Notifica sobre CompraRealizada")
+Rel(eventbus, notificationconsumer, "Notifica sobre CompraRealizada")
+
+Rel(paymentconsumer, pagamentos, "Processa pagamento")
+Rel(notificationconsumer, cliente, "Envia notificação")
+
+
+@enduml
