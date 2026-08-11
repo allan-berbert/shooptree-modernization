@@ -709,3 +709,16 @@ diferentes níveis de abstração.
 Dessa forma, a prova de conceito conecta a análise arquitetural, a
 decisão registrada no ADR, a aplicação do Design Pattern e a
 implementação prática em Python/FastAPI.
+
+---
+
+# 21. Endpoint DELETE — Produtos
+
+Além das operações de consulta e cadastro, o Serviço de Produtos possui um endpoint para remoção dos produtos armazenados em memória.
+
+## DELETE `/produtos`
+
+O endpoint:
+
+```text
+DELETE /produtos
