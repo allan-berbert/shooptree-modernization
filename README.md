@@ -722,3 +722,13 @@ O endpoint:
 
 ```text
 DELETE /produtos
+
+---
+
+# 22. Exemplo concreto de solução existente
+
+Um exemplo de aplicação de uma arquitetura baseada em serviços independentes e comunicação orientada a eventos é a **Amazon**.
+
+A plataforma utiliza serviços independentes para diferentes responsabilidades e mecanismos de comunicação orientados a eventos para integrar funcionalidades, permitindo que componentes sejam desenvolvidos, escalados e atualizados de forma independente.
+
+Essa abordagem apresenta similaridades com a proposta de modernização da ShoopTree, especialmente na separação de responsabilidades e na utilização de eventos para permitir que diferentes componentes reajam a uma mesma ação de negócio.
